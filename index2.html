@@ -15,36 +15,31 @@
 <!--==========================================================================-->
 <div class="wrapper">
     <div class="sample">
-       Промокод: <input type="text" v-model.trim="promo"><br><br>
-        <div v-if="hasSale">
-            <div>Базовая цена: {{ price }} - {{ sale }}%</div>
-            <div>Цена со скидкой: {{ total }}</div>
-        </div>
-        <div v-else>Цена: {{ price }}</div>
+        FirstName: <input type="text" v-model="firstName"><br>
+        LastName: <input type="text" v-model="lastName">
+        <hr>
+        <h2>Hello, {{ istut }}</h2>
     </div>
 </div>
 <!--==========================================================================-->
 
 <script>
-    function getSale(promo) {
-        let codes = {
-            some: 10,
-            other: 20
-        }
-        return codes.hasOwnProperty(promo) ? codes[promo] : 0;
-    }
 
   let sa1 = Vue.createApp({
         data: () => ({
-            promo: '',
-            price: 1000
+            firstName: '',
+            lastName: ''
         }),
+        // methods: {
+        //     onInput(e) {
+        //             this.name = e.target.value;
+        //     },
         computed: {
-            sale() { return getSale(this.promo); },
-            hasSale() {return this.sale >0},
-            total() {
-                let sale = getSale(this.promo);
-                return this.price*(1 - sale / 100);
+            istut() {
+                if (this.firstName == 3) {
+                    console.log('+');
+                }
+                return `${this.firstName} ${this.lastName}`;
                 }
         }
     })
