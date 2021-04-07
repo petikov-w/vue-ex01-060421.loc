@@ -12,5 +12,38 @@
 </head>
 <body>
 
+<!--==========================================================================-->
+<div class="wrapper">
+    <div class="sample">
+        FirstName: <input type="text" v-model="firstName"><br>
+        LastName: <input type="text" v-model="lastName">
+        <hr>
+        <h2>Hello, {{ istut }}</h2>
+    </div>
+</div>
+<!--==========================================================================-->
+
+<script>
+
+  let sa1 = Vue.createApp({
+        data: () => ({
+            firstName: '',
+            lastName: ''
+        }),
+        // methods: {
+        //     onInput(e) {
+        //             this.name = e.target.value;
+        //     },
+        computed: {
+            istut() {
+                return `${this.firstName} ${this.lastName}`;
+                }
+        }
+    })
+
+  sa1.mount('.sample')
+
+</script>
+
 </body>
 </html>
